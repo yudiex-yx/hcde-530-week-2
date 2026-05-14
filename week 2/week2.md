@@ -14,6 +14,10 @@ This week’s work is a **small, runnable example** of processing a **tabular da
 
 **Documentation**: anything that helps **someone else (or future you)** understand **what the data is**, **what the script expects**, and **what the important lines are doing**—including short comments in code, clear variable names, and project-level notes (like this file or `.cursorrules`).
 
+### Documentation in this repo
+
+Comments in `demo_word_count.py` are meant to explain **intent, measurement choices, and reliability** (encoding, column keys, what “word” means here)—not to narrate every line. That keeps the script readable as **evidence** that matches the limits described below.
+
 ---
 
 ## What I actually practiced
@@ -32,7 +36,7 @@ This week’s work is a **small, runnable example** of processing a **tabular da
 3. **Loop** over each row, count words, and **print** a readable table (ID, role, word count, short preview of text).
 4. **Summarize** with simple aggregate stats (how many responses, min / max / average word count).
 
-The parts worth noticing for “data file literacy” are: **UTF-8 encoding**, **using column names instead of column indexes** (`DictReader`), and **keeping the printed output human-readable** so results can be sanity-checked quickly.
+The parts worth noticing for “data file literacy” are: **UTF-8 encoding**, **using column names instead of column indexes** (`DictReader`), and **keeping the printed output human-readable** so results can be sanity-checked quickly. The reflection and `demo_word_count.py` are written to stay **aligned**: limits discussed here match what the counting function actually does.
 
 ---
 
@@ -47,6 +51,7 @@ The parts worth noticing for “data file literacy” are: **UTF-8 encoding**, *
 **Limits (honest)**
 
 - Word counts are a **shallow** measure; they don’t capture meaning or quality of responses.
+- The script uses **whitespace splitting** (``split()``). That makes the number a **length proxy**, not a precise linguistic count: **punctuation stays attached** to the neighboring token (for example, ``"great,"`` counts as one token), and the script does not normalize hyphenation or contractions.
 - Real research workflows often need **consent, de-identification, and data governance** steps that this demo does not cover—by design, for class scope.
 
 ---
